@@ -67,7 +67,17 @@ echo "Create a basic auth user for Prometheus."
 read -p "Enter username (default: admin): " USERNAME
 USERNAME=${USERNAME:-admin}
 
-sudo htpasswd -cb /etc/nginx/.htpasswd $USERNAME
+read -s -p "Enter password for user '$USERNAME': " PASSWORD
+echo
+read -s -p "Confirm password: " PASSWORD_CONFIRM
+echo
+
+if [ "$PASSWORD" != "$PASSWORD_CONFIRM" ]; then
+    echo "❌ Passwords do not match. Exiting."
+    exit 1
+fi
+
+sudo htpasswd -cb /etc/nginx/.htpasswd "$USERNAME" "$PASSWORD"
 
 # Configure nginx
 echo "Configuring nginx for Prometheus reverse proxy with basic auth..."
