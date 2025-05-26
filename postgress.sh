@@ -6,7 +6,7 @@ set -e
 
 # Configuration
 POSTGRES_USER="admin"
-POSTGRES_PASSWORD="StrongPassword123"
+POSTGRES_PASSWORD="admin"
 POSTGRES_DB="mydatabase"
 
 # Update and install PostgreSQL
@@ -49,7 +49,7 @@ set -e
 # Configuration
 EXPORTER_VERSION="0.15.0"
 POSTGRES_USER="admin"
-POSTGRES_PASSWORD="StrongPassword123"
+POSTGRES_PASSWORD="admin"
 DATA_SOURCE_NAME="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/postgres?sslmode=disable"
 
 # Download PostgreSQL Exporter
